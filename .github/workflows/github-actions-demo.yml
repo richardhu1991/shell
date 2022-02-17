@@ -19,7 +19,7 @@ jobs:
       - name: shell action test
         uses: ./
         with:
-          commands: 'pwd && ls -al'
+          commands: 'pwd && ls -al && docker ps -a'
       - name: check process
         run: ps -ef
       - name: check docker containers
