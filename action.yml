@@ -1,0 +1,12 @@
+name: 'Shell'
+description: 'execute shell'
+inputs:
+  commands:  # id of input
+    description: 'script to run'
+    required: true
+    default: 'echo hello world'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.commands }}
