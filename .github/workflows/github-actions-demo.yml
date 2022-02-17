@@ -1,0 +1,28 @@
+name: GitHub Actions Demo
+on: [push]
+jobs:
+  My-Job:
+    runs-on: ubuntu-latest
+    container: docker:20.10.12
+    steps:
+      - name: prepare
+        run: |
+          pwd
+          touch sample.txt
+      - name: Hello world action step
+        id: hello
+        uses: actions/hello-world-docker-action@master
+        with:
+          who-to-greet: 'changyi be happy'
+      - name: shell action test
+        uses: ./
+        with:
+          commands: 'pwd && ls -al'
+      - name: check process
+        run: ps -ef
+      - name: check docker containers
+        run: docker ps -a
+      - name: check
+        run: |
+          pwd
+          ls -al
