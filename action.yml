@@ -1,12 +1,11 @@
-name: 'Shell'
-description: 'execute shell'
-inputs:
-  commands:  # id of input
-    description: 'script to run'
-    required: true
-    default: 'echo hello world'
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.commands }}
+jobs:
+  scripts:
+    runs-on: windows-latest
+    steps:
+      - run: echo "This step runs in the default shell"
+      - run: echo "This step runs in bash"
+        shell: bash
+      - run: Write-Host "This step runs in PowerShell Core"
+        shell: pwsh
+      - run: Write-Host "This step runs in PowerShell"
+        shell: powershell
